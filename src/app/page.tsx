@@ -1,103 +1,136 @@
+import "./styles.css";
+import SwiperPopularPackages from "@/components/Swiper/popularPackages";
+import SwiperFixedPackages from "@/components/Swiper/fixedPackages";
+import SwiperInternationalPackages from "@/components/Swiper/internationalPackages";
+import SwiperLastMinutePackages from "@/components/Swiper/lastMinutePackages";
+import SwiperHeroPackages from "@/components/Swiper/heroPackages";
 import Image from "next/image";
+import {
+  getFixedPackages,
+  getHomeData,
+  getInternationalPackages,
+  getLastMinutePackages,
+  getPopularPackages,
+} from "@/payload";
+import Marquee from "react-fast-marquee";
 
-export default function Home() {
+// swiper navigation and pagination css files
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Package } from "@/payload-types";
+import { CircularSlider } from "@/components/ImageCircularSlider";
+import { IconItineraries, IconLuxury, IconPlanning, IconTrust } from "@/assets/icons/IconsWhyTydd";
+
+export const revalidate = 60;
+
+export default async function HomePage() {
+  const [packages, fixedPackages, lastMinutePackages, homeData, internationalPackages] =
+    await Promise.all([
+      getPopularPackages(),
+      getFixedPackages(),
+      getLastMinutePackages(),
+      getHomeData(),
+      getInternationalPackages(),
+    ]);
+
+  const whyTydd = [
+    {
+      title: "Affordable Luxury",
+      icon: <IconLuxury />,
+    },
+    {
+      title: "Custom Itineraries",
+      icon: <IconItineraries />,
+    },
+    {
+      title: "Seamless Planning",
+      icon: <IconPlanning />,
+    },
+    {
+      title: "Affordable Luxury",
+      icon: <IconTrust />,
+    },
+  ];
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="layout">
+      {/* Hero packages will redirect to same as popular packages */}
+      <SwiperHeroPackages data={(homeData?.hero_Packages as Package[]) || []} />
+      {/* packages with popular boolean marked as true */}
+      <SwiperPopularPackages title="Popular Packages" data={packages} />
+      {/* last minute date packages with discount */}
+      {homeData?.last_minute_date?.show_last_minute_packages && (
+        <SwiperLastMinutePackages
+          title="Last Minute Deals"
+          data={lastMinutePackages}
+          dates={homeData?.last_minute_date}
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      )}
+      {/* fixed date packages */}
+      {homeData?.show_fixed_departures_packages && (
+        <SwiperFixedPackages title="Fixed Departures" data={fixedPackages} />
+      )}
+      {/* packages with international type */}
+      <SwiperInternationalPackages
+        title="International Budget-Friendly Packages"
+        data={internationalPackages}
+      />
+      <div className="px-4 lg:px-20">
+        <h2 className="text-darkBlue ">Why TYDD</h2>
+        <div className="mt-8 lg:mt-14 flex gap-6 lg:gap-32 lg:flex-row flex-col">
+          <div className="flex flex-col gap-6 lg:gap-14">
+            <p className="text-sm lg:text-xl">
+              At TYDD, we go beyond ordinary travel experiences to create extraordinary memories.
+              Our dedication to personalized service and seamless journeys ensures your trip is
+              unforgettable. With expert planning and attention to detail, every aspect of your
+              travel is in safe hands. Let us turn your dream vacation into a reality, stress-free
+              and memorable.
+            </p>
+            <div className="grid lg:grid-cols-2 grid-cols-1 gap-y-4 lg:gap-y-10 gap-x-16">
+              {whyTydd?.map((item, index) => (
+                <div key={index} className="lg:py-2 flex items-center gap-2 lg:gap-6">
+                  {item.icon}
+                  <h4 className="text-black h4 font-bold">{item.title}</h4>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="w-full lg:w-[412px] h-[468px] relative shrink-0">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/whytydd.webp"
+              alt="image"
+              fill
+              className="object-cover"
+              sizes="(max-width: 450px) 100vw, (max-width: 1920px) 40vw"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      <div>
+        <h2 className="text-darkBlue px-4 lg:px-20">Our Partners</h2>
+        <Marquee className="marqueeContainer">
+          {[
+            "/partner1.webp",
+            "/partner2.webp",
+            "/partner3.webp",
+            "/partner4.webp",
+            "/partner2.webp",
+            "/partner3.webp",
+          ]?.map((src, index) => (
+            <Image
+              key={index}
+              src={src}
+              alt="image"
+              width={0}
+              height={156}
+              className="mx-4 lg:mx-10 lg:h-[156px] h-14 w-auto object-contain"
+              sizes="(max-width: 450px) 50vw, (max-width: 1920px) 40vw"
+              loading="lazy"
+            />
+          ))}
+        </Marquee>
+      </div>
+      <CircularSlider data={homeData?.testimonials_home ?? []} />
     </div>
   );
 }
