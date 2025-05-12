@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         port: "3001",
         pathname: "/api/media/file/**",
       },
+      {
+        protocol: "https",
+        hostname: "tydd.vercel.app",
+        pathname: "/api/media/file/**",
+      },
     ],
   },
 };
