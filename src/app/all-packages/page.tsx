@@ -1,13 +1,13 @@
-import { getAllPackagesTestimonials, getPackages } from '@/payload'
-import FilterPackages from './FilterPackages'
-import { Suspense } from 'react'
-import HeroImageSlider from './HeroImageSlider'
+import { getAllPackagesTestimonials, getPackages } from "@/payload";
+import FilterPackages from "./FilterPackages";
+import { Suspense } from "react";
+import HeroImageSlider from "./HeroImageSlider";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export default async function AllPackagesPage() {
-  const allPackages = await getPackages()
-  const testimonial_data = await getAllPackagesTestimonials(1)
+  const allPackages = await getPackages();
+  const testimonial_data = await getAllPackagesTestimonials();
 
   return (
     <div className="layout">
@@ -19,5 +19,5 @@ export default async function AllPackagesPage() {
         <FilterPackages allPackages={allPackages} testimonial_data={testimonial_data} />
       </Suspense>
     </div>
-  )
+  );
 }
