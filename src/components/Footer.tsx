@@ -1,38 +1,46 @@
-import IconFaceBook from '@/assets/icons/facebook'
-import IconInstagram from '@/assets/icons/instagram'
-import IconLogo from '@/assets/icons/logo'
-import Image from 'next/image'
-import Link from 'next/link'
+import IconFaceBook from "@/assets/icons/facebook";
+import IconInstagram from "@/assets/icons/instagram";
+import IconLogo from "@/assets/icons/logo";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   const footerData = [
     {
-      header: 'Destination',
+      header: "Destination",
       links: [
-        { name: 'Maldives', href: '/package/packages/Maldives' },
-        { name: 'Mauritius', href: '/package/packages/Mauritius' },
-        { name: 'Sri Lanka', href: '/package/packages/Sri-Lanka' },
+        { name: "Maldives", href: "/package/packages/Maldives" },
+        { name: "Mauritius", href: "/package/packages/Mauritius" },
+        { name: "Sri Lanka", href: "/package/packages/Sri-Lanka" },
       ],
     },
     {
-      header: 'General',
+      header: "General",
       links: [
-        { name: 'Domestic packages', href: '/all-packages?type=domestic' },
-        { name: 'International packages', href: '/all-packages?type=international' },
-        { name: 'Cruise packages', href: '/all-packages?type=cruise' },
-        { name: 'About us', href: '/about' },
-        { name: 'Contact us', href: '/contact-us' },
+        { name: "Domestic packages", href: "/all-packages?type=domestic" },
+        { name: "International packages", href: "/all-packages?type=international" },
+        { name: "Cruise packages", href: "/all-packages?type=cruise" },
+        { name: "About us", href: "/about" },
+        { name: "Contact us", href: "/contact-us" },
       ],
     },
     {
-      header: 'Reach us',
+      header: "Policies",
       links: [
-        { name: 'info@tydd.in', href: 'mailto:info@tydd.in' },
-        { name: 'Connect over Whatsapp', href: 'https://wa.me/919987159008' },
-        { name: '+91-9987159008', href: 'tel:+9199871 59008' },
+        { name: "Terms & Conditions", href: "/terms&conditions" },
+        { name: "Privacy Policy", href: "/privacypolicy" },
+        { name: "Cancellation Policy", href: "/cancellationpolicy" },
       ],
     },
-  ]
+    {
+      header: "Reach us",
+      links: [
+        { name: "info@tydd.in", href: "mailto:info@tydd.in" },
+        { name: "Connect over Whatsapp", href: "https://wa.me/919987159008" },
+        { name: "+91-9987159008", href: "tel:+9199871 59008" },
+      ],
+    },
+  ];
   return (
     <footer className="relative px-4 pt-10 lg:px-20 lg:pt-12">
       <Image
@@ -56,13 +64,13 @@ export default function Footer() {
             {[
               {
                 icon: <IconFaceBook />,
-                title: 'Facebook',
-                link: 'https://www.facebook.com/profile.php?id=61570062492405',
+                title: "Facebook",
+                link: "https://www.facebook.com/profile.php?id=61570062492405",
               },
               {
                 icon: <IconInstagram />,
-                title: 'Instagram',
-                link: 'https://www.instagram.com/travelyourdreamdestination?igsh=MWppM2JwMmJ1OXpqag==',
+                title: "Instagram",
+                link: "https://www.instagram.com/travelyourdreamdestination?igsh=MWppM2JwMmJ1OXpqag==",
               },
             ]?.map((item, index) => (
               <Link key={index} href={item.link} target="_blank" aria-label={item?.title}>
@@ -90,5 +98,5 @@ export default function Footer() {
         @2023 Travel Your Dream Destination. All rights reserved.
       </p>
     </footer>
-  )
+  );
 }

@@ -81,7 +81,7 @@
 
 @layer utilities {
   .h1b {
-    @apply lg:text-[56x] lg:leading-[68px] text-[40x] leading-[48px] font-bold;
+    @apply lg:text-[56px] lg:leading-[68px] text-[40x] leading-[48px] font-bold;
   }
   .h2b {
     @apply lg:text-[40x] lg:leading-[48px] text-[24x] leading-[32px] font-bold;
