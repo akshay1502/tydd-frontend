@@ -2,20 +2,23 @@ import { getAllPackagesTestimonials, getPackages } from "@/payload";
 import FilterPackages from "./FilterPackages";
 import { Suspense } from "react";
 import HeroImageSlider from "./HeroImageSlider";
+import { SkeletonHeroImageSlider, SkeletonPackages } from "@/lib/skeleton";
 
 export const dynamic = "force-dynamic";
 
 export default async function AllPackagesPage() {
-  const allPackages = await getPackages();
-  const testimonial_data = await getAllPackagesTestimonials();
+  const [allPackages, testimonial_data] = await Promise.all([
+    getPackages(),
+    getAllPackagesTestimonials(),
+  ]);
 
   return (
     <div className="layout">
       {/* image gallery section */}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<SkeletonHeroImageSlider />}>
         <HeroImageSlider />
       </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<SkeletonPackages />}>
         <FilterPackages allPackages={allPackages} testimonial_data={testimonial_data} />
       </Suspense>
     </div>

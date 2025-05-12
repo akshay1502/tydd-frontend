@@ -65,7 +65,7 @@ export default async function DetailPage({ params }: { params: DetailPageProps }
               fill
               className="object-cover rounded-xl"
               priority
-              sizes="(min-width: 1280px) 70vw, 100vw"
+              sizes="(min-width: 1280px) 70vw, (max-width: 1920px) 80vw"
             />
           </div>
 
@@ -80,7 +80,7 @@ export default async function DetailPage({ params }: { params: DetailPageProps }
               alt={typeof data?.gallery?.[1] === "object" ? data.gallery[1]?.alt ?? "" : ""}
               fill
               className="object-cover rounded-xl"
-              sizes="(min-width: 1280px) 70vw, 100vw"
+              sizes="(max-width: 450px) 50vw, (max-width: 1920px) 50vw"
             />
           </div>
 
@@ -95,7 +95,7 @@ export default async function DetailPage({ params }: { params: DetailPageProps }
               alt={typeof data?.gallery?.[2] === "object" ? data.gallery[2]?.alt ?? "" : ""}
               fill
               className="object-cover rounded-xl"
-              sizes="(min-width: 1280px) 70vw, 100vw"
+              sizes="(max-width: 450px) 50vw, (max-width: 1920px) 25vw"
             />
           </div>
 
@@ -110,7 +110,7 @@ export default async function DetailPage({ params }: { params: DetailPageProps }
               alt={typeof data?.gallery?.[3] === "object" ? data.gallery[3]?.alt ?? "" : ""}
               fill
               className="object-cover rounded-xl"
-              sizes="(min-width: 1280px) 70vw, 100vw"
+              sizes="(max-width: 450px) 50vw, (max-width: 1920px) 25vw"
             />
           </div>
 
@@ -212,6 +212,7 @@ export default async function DetailPage({ params }: { params: DetailPageProps }
                   }
                   fill
                   className="object-cover"
+                  sizes="(max-width: 450px) 50vw, (max-width: 1920px) 50vw"
                 />
               </div>
               <div className="flex flex-col lg:gap-4 gap-2 lg:p-4 p-2">

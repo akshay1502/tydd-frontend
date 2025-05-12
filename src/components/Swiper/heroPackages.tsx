@@ -32,7 +32,9 @@ export default function SwiperHeroPackages({ data }: { data: Package[] }) {
               fill
               className="object-cover -z-10"
               priority
+              sizes="(max-width: 450px) 50vw, (max-width: 1920px) 100vw"
             />
+
             <div className="flex flex-col gap-5 absolute left-4 lg:left-24 top-1/2 -translate-y-1/2">
               <h4 className="text-white">{item?.title}</h4>
               <h1 className="text-white font-bold text-5xl">{item?.destination}</h1>

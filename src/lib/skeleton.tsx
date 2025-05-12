@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function SkeletonCircularSlider() {
   return (
@@ -12,5 +12,29 @@ export function SkeletonCircularSlider() {
         <Skeleton className="lg:h-40 lg:w-40 h-20 w-20 rounded-full" />
       </div>
     </div>
-  )
+  );
+}
+
+export function SkeletonHeroImageSlider() {
+  return (
+    <div className="lg:h-[516px] h-[260px] flex gap-4 lg:mx-20 lg:rounded-3xl">
+      <Skeleton className="h-full w-full" />
+      <Skeleton className="h-full w-full" />
+      <Skeleton className="h-full w-full" />
+    </div>
+  );
+}
+
+export function SkeletonPackages() {
+  return (
+    <div className="lg:px-20 px-4 flex gap-4">
+      {[...Array(3)].map((_, index) => (
+        <div key={index} className="flex gap-2 flex-col">
+          <Skeleton className="w-48 h-48" />
+          <Skeleton className="w-48 h-[24px]" />
+          <Skeleton className="w-48 h-[24px]" />
+        </div>
+      ))}
+    </div>
+  );
 }
