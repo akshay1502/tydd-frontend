@@ -1,77 +1,77 @@
-import Image from 'next/image'
-import Services from './services'
+import Image from "next/image";
+import Services from "./services";
 import {
   IconExcellence,
   IconPassion,
   IconPersonalisation,
   IconTrust,
-} from '@/assets/icons/standings'
+} from "@/assets/icons/standings";
 import {
   IconItineraries,
   IconLuxury,
   IconPlanning,
   IconTrust as IconTrust2,
-} from '@/assets/icons/IconsWhyTydd'
+} from "@/assets/icons/IconsWhyTydd";
 
 const standings = [
   {
     id: 1,
-    title: 'Personalisation',
+    title: "Personalisation",
     description:
-      'Your journey, your way—every itinerary is crafted to match your unique preferences and desires.',
-    background: '#FFCB0014',
+      "Your journey, your way—every itinerary is crafted to match your unique preferences and desires.",
+    background: "#FFCB0014",
     icon: <IconPersonalisation />,
   },
   {
     id: 2,
-    title: 'Trust',
+    title: "Trust",
     description:
-      'Count on us for reliable service, seamless planning, and unforgettable travel experiences.',
-    background: '#e300161a',
+      "Count on us for reliable service, seamless planning, and unforgettable travel experiences.",
+    background: "#e300161a",
     icon: <IconTrust />,
   },
   {
     id: 3,
-    title: 'Passion',
+    title: "Passion",
     description:
-      'Our love for travel fuels our dedication to creating unforgettable journeys for every explorer.',
-    background: '#6d91c61f',
+      "Our love for travel fuels our dedication to creating unforgettable journeys for every explorer.",
+    background: "#6d91c61f",
     icon: <IconPassion />,
   },
   {
     id: 4,
-    title: 'Excellence',
+    title: "Excellence",
     description:
-      'From start to finish, we aim for perfection, delivering top-notch service and memorable experiences.',
-    background: '#0090351a',
+      "From start to finish, we aim for perfection, delivering top-notch service and memorable experiences.",
+    background: "#0090351a",
     icon: <IconExcellence />,
   },
-]
+];
 
 const whyTydd = [
   {
-    title: 'Affordable Luxury',
+    title: "Affordable Luxury",
     icon: <IconLuxury />,
   },
   {
-    title: 'Custom Itineraries',
+    title: "Custom Itineraries",
     icon: <IconItineraries />,
   },
   {
-    title: 'Seamless Planning',
+    title: "Seamless Planning",
     icon: <IconPlanning />,
   },
   {
-    title: 'Affordable Luxury',
+    title: "Affordable Luxury",
     icon: <IconTrust2 />,
   },
-]
+];
 
 export default function AboutPage() {
   return (
     <div className="lg:px-20 px-4 pt-3 lg:pt-10 layout">
       <div className="w-full h-[508px] relative rounded-3xl overflow-hidden">
-        <Image src="/contact.webp" alt="image" fill className="object-cover" />
+        <Image src="/about.webp" alt="image" fill className="object-cover" />
         <div className="absolute top-1/2 -translate-y-1/2 lg:left-24 left-4 right-4 lg:right-0 lg:w-[848px]">
           <h2 className="text-white  mb-5">About us</h2>
           <p className="b2reg text-white">
@@ -152,5 +152,5 @@ export default function AboutPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
