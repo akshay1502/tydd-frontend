@@ -6,7 +6,11 @@ import Link from "next/link";
 
 // fixed packages have a pill requirement, this can be shifted to pill file later on
 const Pill = ({ text }: { text: string }) => {
-  return <button className="text-sm py-1 px-3 rounded-full bg-blue text-white">{text}</button>;
+  return (
+    <button className="text-sm py-1 px-3 rounded-full bg-blue text-white">
+      {text}
+    </button>
+  );
 };
 
 export default function FixedDeparture({ data }: { data: FixedPackage }) {
@@ -19,12 +23,19 @@ export default function FixedDeparture({ data }: { data: FixedPackage }) {
         <div className="w-[300] h-56 relative">
           <Image
             src={
-              typeof data.image === "object" && data.image?.url ? getMediaUrl(data.image.url) : ""
+              typeof data.image === "object" && data.image?.url
+                ? getMediaUrl(data.image.url)
+                : ""
             }
-            alt={typeof data.image === "object" && data.image?.alt ? data.image.alt : ""}
+            alt={
+              typeof data.image === "object" && data.image?.alt
+                ? data.image.alt
+                : ""
+            }
             fill
             className="object-cover"
             sizes="(max-width: 450px) 50vw, (max-width: 1920px) 25vw"
+            loading="lazy"
           />
           <div className="w-full h-full bg-[#00000026] z-10 absolute"></div>
         </div>
