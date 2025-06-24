@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TYDD (Travel Your Dream Destination)
 
-## Getting Started
+![Thumbnail](./public/thumbnail.png)
 
-First, run the development server:
+## How to get started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Clone the repo
+  - `git clone https://github.com/akshay1502/tydd-frontend.git`
+- Install all dependencies
+  - `npm install`
+- Running the project
+  - `npm run dev`
+- Find backend at
+  - `https://github.com/akshay1502/tydd`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Nextjs
+- [Payload cms](https://payloadcms.com/docs/getting-started/what-is-payload)
+- Postgres by supabase
+- Supabase storage
+- vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## /src/app includes below folders
 
-## Learn More
+- **/(routes)** - frontend routes
+- **/(api)** - APIs for handling form submissions
 
-To learn more about Next.js, take a look at the following resources:
+## Project working
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Know the **.env** variables required from [.env.example](https://github.com/akshay1502/tydd/blob/QA/.env.example) file
+- Running `npm run dev` will start the server at `http://localhost:3000/`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Miscellaneous
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Project uses `shadcn` and `tailwind` for rendering frontend UI elements
+- `Nodemailer` is being used for sending mails
+- Forms are handled using `react-hook-form` along with `zod` for validations
+- `Swiper` is being used for serving multipel use cases
+- `yet-another-react-lightbox` package for showcasing gallery
+- `gsap` for animations
